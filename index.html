@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ДиОТК — источники по вопросам (1–67)</title>
+  <meta name="theme-color" content="#111827" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-title">
+      <div class="app-title__main">ДиОТК — навигатор источников</div>
+      <div class="app-title__sub">Вопросы 1–67 • ссылки + где искать в презентациях</div>
+    </div>
+    <button id="btnInstall" class="btn btn-ghost" hidden>Установить</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <div class="field">
+          <label for="qNumber">Номер</label>
+          <div class="row row--tight">
+            <button id="btnPrev" class="btn" title="Предыдущий">◀</button>
+            <input id="qNumber" type="number" inputmode="numeric" min="1" max="67" />
+            <button id="btnNext" class="btn" title="Следующий">▶</button>
+          </div>
+        </div>
+
+        <div class="field field--grow">
+          <label for="qSelect">Или выбери из списка</label>
+          <select id="qSelect"></select>
+        </div>
+
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="btnGo" class="btn btn-primary">Показать</button>
+        </div>
+      </div>
+
+      <details class="settings">
+        <summary>Настройки и база</summary>
+        <div class="settings__grid">
+          <div class="field field--grow">
+            <label for="docsBaseUrl">Базовый URL для файлов (если хочешь открывать PPT/PDF по ссылке)</label>
+            <input id="docsBaseUrl" type="text" placeholder="Напр.: https://site.ru/docs/ или /docs/" />
+            <div class="hint">Если указать, названия файлов станут кликабельными (baseURL + имя файла).</div>
+          </div>
+
+          <div class="row row--tight" style="align-items:flex-end">
+            <div class="field">
+              <label for="dbFile">Импорт базы (questions.json)</label>
+              <input id="dbFile" type="file" accept="application/json,.json" />
+            </div>
+            <button id="btnResetDb" class="btn">Сбросить базу</button>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="q-header">
+        <div id="qTitle" class="q-title">—</div>
+        <div id="qMeta" class="q-meta">—</div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <h3>Интернет-источники</h3>
+          <div id="sources" class="list"></div>
+          <div class="hint">Если список пустой, показываются готовые поисковые ссылки (Google/Яндекс/Scholar) по названию вопроса.</div>
+        </div>
+
+        <div>
+          <h3>Где искать в презентациях</h3>
+          <div id="presentations" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Подсказка: на телефоне можно нажать <b>«Поделиться → На экран Домой»</b> (Safari/Chrome), чтобы пользоваться как приложением.</div>
+      <div class="muted">Данные берутся из <code>questions.json</code>. Можно импортировать свой JSON через настройки.</div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
